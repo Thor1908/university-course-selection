@@ -1,0 +1,38 @@
+<div class="signup-page">
+  <form #loginForm="ngForm" (ngSubmit)="login(loginForm.value)">
+    <h3>LOGIN</h3>
+    <div class="form-group">
+      <label for="uname">Username:<span class="required-field">*</span></label>
+      <input type="text" class="form-control" #username="ngModel" ngModel name="username" id="uname" size="40"
+        placeholder="Enter username" required>
+      <span class="text-danger" *ngIf="(username.touched || submitted) && username.errors?.required">
+        User Name is required
+      </span>
+    </div>
+    <div class="form-group">
+      <label for="pwd">Password:<span class="required-field">*</span></label>
+      <input type="password" class="form-control" #password="ngModel" ngModel name="password" id="pwd" size="40"
+        placeholder="Enter password" required>
+      <span><i class="bi bi-eye mr-2" (click)="togglePassword()"></i>Show Password</span>
+
+      <span class="text-danger" *ngIf="(password.touched || submitted) && password.errors?.required">
+        Password is required
+      </span>
+      <br>
+
+    </div>
+    
+    
+    <div class="form-group">
+      <button type="submit" class="btn btn-success">Log In</button>
+    </div>
+    <span *ngIf="invalidLogin ==true">
+      <div class="alert alert-danger text-center" ng-model="message" role="alert">
+        {{message}}
+      </div>
+    </span>
+    
+
+  </form>
+
+</div>
